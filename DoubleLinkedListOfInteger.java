@@ -64,9 +64,9 @@ public class DoubleLinkedListOfInteger {
             // "Caminha" ate a posicao index
             Node aux = this.getNodeIndex(index);
             // "Encadear" o nodo na lista
-            n.next = aux; 
-            n.prev = aux.prev;
-            aux.prev.next = n;
+            n.next = aux;           // o next do n é o aux
+            n.prev = aux.prev;      // o prev do n recebe o prev do aux (o nodo entra no meio)
+            aux.prev.next = n;      // o nodo que está atrás do n (estava atrás do aux primeiramente) vai se conectar ao n
             aux.prev = n;
             // Atualiza o count
             count++;
