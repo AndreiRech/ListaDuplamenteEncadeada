@@ -47,7 +47,11 @@ public class StackOfInterger {
     }
 
     public void clear() { //esvazia a pilha
-
+        top = new Node(null);
+        bottom = new Node(null);
+        top.next = bottom;
+        bottom.prev = top;
+        count = 0;
     }
 
     @Override
