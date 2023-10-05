@@ -34,6 +34,62 @@ public class App {
         System.out.println("\n------ [ TESTE DO TRABALHO (2) ] --------");
         System.out.println(pilha);
 
+        System.out.println("\n------ [ TESTE DO TRABALHO (3a) ] --------");
+
+        DoubleLinkedListOfInteger dlist3 = new DoubleLinkedListOfInteger();
+
+        dlist3.add(46);
+        dlist3.add(1);
+        dlist3.add(57);
+        dlist3.add(62);
+        dlist3.add(29);
+        dlist3.add(14);
+        dlist3.add(31);
+        dlist3.add(59);
+        dlist3.add(50);
+
+        System.out.println("\n");
+
+        System.out.println("Fila: " + dlist3);
+        System.out.println("Enqueue: " + dlist3.enqueue(32));
+        System.out.println("Enqueue: " + dlist3.enqueue(42));
+        System.out.println("Fila: " + dlist3);
+        System.out.println("Tamanho: " + dlist3.size());
+        System.out.println("Dequeue: " + dlist3.dequeue());
+        System.out.println("Enqueue: " + dlist3.enqueue(52));
+        System.out.println("Fila: " + dlist3);
+        System.out.println("Head (topo): " + dlist3.head());
+        System.out.println("Dequeue: " + dlist3.dequeue());
+        System.out.println("Fila: " + dlist3);
+        System.out.println("Head (topo): " + dlist3.head());
+        System.out.println("Tamanho: " + dlist3.size());
+        System.out.println("Está vazia? " + dlist3.isEmpty());
+        dlist3.clear();
+        System.out.println("Fila foi limpa");
+        System.out.println("Está vazia? " + dlist3.isEmpty());
+
+
+        System.out.println("\n------ [ TESTE DO TRABALHO (3b) ] --------");
+
+        dlist3.add(46);
+        dlist3.add(19);
+        dlist3.add(57);
+        dlist3.add(62);
+        dlist3.add(29);
+        dlist3.add(14);
+        dlist3.add(31);
+        dlist3.add(59);
+        dlist3.add(50);
+
+        System.out.println("\n");
+
+        System.out.println(dlist3);
+        dlist3.enqueuePriority(2);
+        System.out.println("\nElemento 2 (prioridade) incluido\n");
+        System.out.println(dlist3);
+        dlist3.enqueuePriority(21);
+        System.out.println("\nElemento 21 (sem prioridade) incluido\n");
+        System.out.println(dlist3);
     }
 
 }

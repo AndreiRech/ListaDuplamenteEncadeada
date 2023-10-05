@@ -232,7 +232,7 @@ public class DoubleLinkedListOfInteger {
     /**
      * Esvazia a lista
      */
-    public void clear() {
+    /*public void clear() {
         header = new Node(null);
         trailer = new Node(null);
         header.next = trailer;
@@ -244,7 +244,7 @@ public class DoubleLinkedListOfInteger {
      * Retorna o numero de elementos da lista
      * @return o numero de elementos da lista
      */
-    public int size() {
+    /*public int size() {
         return count;
     }
     
@@ -252,7 +252,7 @@ public class DoubleLinkedListOfInteger {
      * Retorna true se a lista não contem elementos
      * @return true se a lista não contem elementos
      */
-    public boolean isEmpty() {
+    /*public boolean isEmpty() {
         return (count == 0);
     }
 
@@ -306,8 +306,18 @@ public class DoubleLinkedListOfInteger {
 
     //----------------------------- [MÉTODOS DO TRABALHO 1] --------------------------------//
 
+
+    // QUESTÃO DE NÚMERO 1)
+    // LETRA A)
+
+    /**
+     * Método que conta o número de ocorrências do elemento passado como parâmetro na lista, retornando este valor
+     * @param element elemento a ser inserido 
+     * @return valor inteiro relativo ao número de ocorrências encontradas 
+     */
+
     public int countOccurrences(Integer elemento) {
-        Node aux = header.next;
+        Node aux = header.next;     //cria o nodo auxiliar
         int cont = 0;
         for (int i=0; i<count; i++) {
             if (aux.element.equals(elemento)) {
@@ -318,15 +328,24 @@ public class DoubleLinkedListOfInteger {
         return cont;
     }
 
+    //LETRA B)
+
+    /**
+     * Método que percorre a lista removendo todos os elementos pares.
+     * Defina os atributos necessários para este algoritmo, pois nenhum método já implementado pode ser chamado
+     * pois nenhum método já implementado pode ser chamado.
+     * @return true se houver alguma remoção, e false caso não tenham elementos pares e não seja feita remoção
+     */
+
     public boolean removeEvenNumbers() {
-        Node aux = header.next;
+        Node aux = header.next;             //cria o nodo auxiliar
         int countOriginal = count;
 
         for (int i=0; i<countOriginal; i++) {
             int auxiliar = aux.element;
-            if (auxiliar%2 == 0) {
-                aux.next.prev = aux.prev;
-                aux.prev.next = aux.next;
+            if (auxiliar%2 == 0) {  
+                aux.next.prev = aux.prev;   //retira as conexões do elemento com o prev e next dele e conecta no proximo
+                aux.prev.next = aux.next;   //retira as conexões do elemento com o prev e next dele e conecta no proximo
                 count--;
             }
             aux = aux.next;
@@ -337,4 +356,97 @@ public class DoubleLinkedListOfInteger {
         }
         return true;
     }
+
+
+
+
+    
+    // QUESTÃO DE NÚMERO 3)
+    // LETRA A)
+    
+    /*Apresente os métodos definidos a seguir para uma classe QueueOfInterger que lida com números inteiros em um estrutura de fila, 
+    considerando que os elementos da fila devem ser armazenados em uma DoubleLinkedListOfInteger. 
+    Crie uma classe App e inclua nela o método main. 
+    Dentro deste método main instancie a fila implementada, inclua elementos e use o restante dos métodos implementados. */
+
+    /*Integer enqueue(Integer element)
+      Integer dequeue()
+      Integer head()
+      int size()
+      boolean isEmpty()
+      void clear()
+     */
+
+     public Integer enqueue(Integer elemento){
+        Node n = new Node(elemento);
+
+        n.next = trailer;       //o novo nodo aponta para o trailer
+        n.prev = trailer.prev;  //o prev do nodo aponta para o prev do trailer
+        trailer.prev.next = n;  //o next do nodo anterior ao trailer aponta para o novo nodo
+        trailer.prev = n;       //o prev do trailer aponta vai apontar para o novo nodo
+        count++;
+        return elemento; 
+    }
+
+    public Integer dequeue(){
+        Integer elemento = header.next.element;  //pegamos o elemento do header
+        header.next = header.next.next;          //atualiza o next do header para o proximo nodo
+        header.next.prev = header;               //atualiza o prev do proximo nodo para o header
+        count--;
+        return elemento;
+    }
+
+    public Integer head(){
+        return header.next.element;  //retorna o elemento da frente
+    }
+
+    public int size(){
+        return count;     //retorna a quantidade de elementos
+    }
+
+    public boolean isEmpty(){
+        return (count == 0);  //retorna true if coount == 0
+    }
+
+    public void clear(){
+        header = new Node(null);
+        trailer = new Node(null);
+        header.next = trailer;
+        trailer.prev = header;
+        count = 0;
+    }
+
+
+    // QUESTÃO DE NÚMERO 3)
+    // LETRA B)
+
+    /*Implemente um método que transforma que usa a lógica de fila de prioridades, 
+    onde um elemento inserido na fila deve ser posicionado de acordo com o seu valor. 
+    A ordem deve ser: 
+
+    /**
+     * Método enqueuePriority()
+     * Recebe como parâmetro um elemento que deve ser inserido na fila de acordo com a sua prioridade
+     * @param element elemento a ser inserido 
+     */
+
+    public void enqueuePriority(Integer elemento){
+        if(elemento > 0 && elemento < 10){
+        Node n = new Node(elemento);
+        Node current = header.next;     //começa na frente da fila
+
+        while(current != trailer && (current.element > 0 && current.element < 10)){ //while não estiver no final & elemento entre 1 e 9
+            current = current.next;     //avança na fila
+        }
+
+        n.next = current;           // Define o next node do novo nodo como o nodo atual (avança o novo nodo na fila)
+        n.prev = current.prev;      // Define o prev node do novo nodo como o prev node do nodo atual
+        current.prev.next = n;      // Atualiza o next node do prev node do nodo atual para apontar para o novo nodo
+        current.prev = n;           // Atualiza o prev node do nodo atual para apontar para o novo nodo
+        count++;
+        }
+        else{
+            enqueue(elemento);
+        }
+     }
 }
