@@ -16,8 +16,8 @@ public class StackOfInterger {
             return false;
         }
 
-        top.next.prev = top.prev;
-        top.prev.next = top.next;
+        top.next = top.next.next;
+        top.next.prev = top;
         count--;
         return true;
     }
@@ -25,17 +25,17 @@ public class StackOfInterger {
     public void push(Integer elemento) { // adicionar no topo
         Node aux = new Node(elemento);
 
-        aux.prev = top.next;
-        aux.next = top;
+        aux.next = top.next;
+        aux.prev = top;
 
-        bottom.prev.next = aux;
-        bottom.prev = aux;
+        top.next.prev = aux;
+        top.next = aux;
 
         count++;
     } 
 
     public int top() { //verifica qual o elemento no topo da pilha
-        return top.element;
+        return top.next.element;
     }
 
     public int size() { //retorna o tamanho
@@ -44,6 +44,23 @@ public class StackOfInterger {
 
     public boolean isEmpty() { //verifica se está vazia
         return (count == 0);
+    }
+
+    public static int[] reverseArrayUsingStack(int[] array) {
+        StackOfInterger p = new StackOfInterger();
+
+        for (int numero : array) {
+            p.push(numero);
+        }
+
+        int[] arrayReverso = new int[array.length];
+        int index = 0;
+        while (!p.isEmpty()) {
+            arrayReverso[index++] = p.top();
+            p.pop();
+        }
+
+        return arrayReverso;
     }
 
     public void clear() { //esvazia a pilha
@@ -58,6 +75,10 @@ public class StackOfInterger {
     public String toString() {
         Node aux = top.next;
         StringBuilder s = new StringBuilder();
+
+        if (count == 0) {
+            return "Vazia";
+        }
 
         for (int i = 0; i < count; i++) {
             s.append(aux.element.toString());

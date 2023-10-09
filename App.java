@@ -2,6 +2,8 @@ public class App {
 
     public static void main(String[] args) {
 
+        System.out.println("\n------ [ TESTE DO TRABALHO (1a e 1b) ] --------");
+
         DoubleLinkedListOfInteger dlist = new DoubleLinkedListOfInteger();
         dlist.add(1);
         dlist.add(2);
@@ -16,6 +18,12 @@ public class App {
         dlist.add(9);
         dlist.add(10);
 
+        System.out.println("\nPrintando a lista original: " +dlist);
+        System.out.println("\nQuantidade de vezes que o 8 aparece: " +dlist.countOccurrences(8));
+        System.out.println("\nFoi removido algum número par da lista? : " +dlist.removeEvenNumbers());
+        System.out.println(dlist);
+
+        System.out.println("\n------ [ TESTE DO TRABALHO (2a) ] --------");
         StackOfInterger pilha = new StackOfInterger();
         pilha.push(1);
         pilha.push(2);
@@ -23,16 +31,31 @@ public class App {
         pilha.push(4);
         pilha.push(5);
         pilha.push(6);
+        System.out.println("Pilha inicial : " +pilha);
 
-        System.out.println("\n------ [ TESTE DO TRABALHO (1a e 1b) ] --------");
+        pilha.pop();
+        pilha.pop();
+        System.out.println("Pilha após 2 pop's : " +pilha);
 
-        System.out.println("\nPrintando a lista original: " +dlist);
-        System.out.println("\nQuantidade de vezes que o 8 aparece: " +dlist.countOccurrences(8));
-        System.out.println("\nFoi removido algum número par da lista? : " +dlist.removeEvenNumbers());
-        System.out.println(dlist);
+        System.out.println("Topo da pilha : " +pilha.top());
+        System.out.println("Verifica se a pilha está vazia : " +pilha.isEmpty());
 
-        System.out.println("\n------ [ TESTE DO TRABALHO (2) ] --------");
-        System.out.println(pilha);
+        pilha.clear();
+        System.out.println("Pilha após o clear : " +pilha + "\nEstá vazia : " +pilha.isEmpty());
+
+        System.out.println("\n------ [ TESTE DO TRABALHO (2b) ] --------");
+        int [] array = {1, 2, 3, 4, 5, 6};
+        int [] arrayInvertido = StackOfInterger.reverseArrayUsingStack(array);
+
+        System.out.println("Array Original:");
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+
+        System.out.println("\nArray Invertido:");
+        for (int num : arrayInvertido) {
+            System.out.print(num + " ");
+        }
 
         System.out.println("\n------ [ TESTE DO TRABALHO (3a) ] --------");
 
