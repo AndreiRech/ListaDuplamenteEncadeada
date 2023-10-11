@@ -11,15 +11,12 @@ public class StackOfInterger {
         count = 0;
     }
 
-    public boolean pop() { // remover do topo
-        if (count <= 0) {
-            return false;
-        }
-
+    public Integer pop() { // remover e retornar  do topo
+        Integer elemento = top.next.element;
         top.next = top.next.next;
         top.next.prev = top;
         count--;
-        return true;
+        return elemento;
     }
 
     public void push(Integer elemento) { // adicionar no topo
