@@ -11,7 +11,7 @@ public class StackOfInterger {
         count = 0;
     }
 
-    public Integer pop() { // remover e retornar  do topo
+    public Integer pop() { // remover e retornar o elemento do topo
         Integer elemento = top.next.element;
         top.next = top.next.next;
         top.next.prev = top;

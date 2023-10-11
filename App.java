@@ -33,8 +33,9 @@ public class App {
         pilha.push(6);
         System.out.println("Pilha inicial : " +pilha);
 
-        pilha.pop();
-        pilha.pop();
+        System.out.println("Elemento removido: " + pilha.pop());
+        System.out.println("Elemento removido: " + pilha.pop());
+
         System.out.println("Pilha após 2 pop's : " +pilha);
 
         System.out.println("Topo da pilha : " +pilha.top());

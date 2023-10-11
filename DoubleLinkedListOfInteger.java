@@ -312,8 +312,8 @@ public class DoubleLinkedListOfInteger {
 
     /**
      * Método que conta o número de ocorrências do elemento passado como parâmetro na lista, retornando este valor
-     * @param element elemento a ser inserido 
-     * @return valor inteiro relativo ao número de ocorrências encontradas 
+     //* @param element elemento a ser inserido
+     //* @return valor inteiro relativo ao número de ocorrências encontradas
      */
 
     public int countOccurrences(Integer elemento) {
